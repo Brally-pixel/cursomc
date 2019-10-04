@@ -3,7 +3,6 @@ package com.jorgesoares.cursomc.service;
 import com.jorgesoares.cursomc.domain.Categoria;
 import com.jorgesoares.cursomc.repositories.CategoriaRepository;
 import com.jorgesoares.cursomc.service.exceptions.ObjNotFoundException;
-import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
