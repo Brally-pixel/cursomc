@@ -1,7 +1,5 @@
 package com.jorgesoares.cursomc.service.exceptions;
 
-import java.io.Serializable;
-
 public class ObjNotFoundException extends RuntimeException {
 
     private static final long serialVersionUID = 1L;

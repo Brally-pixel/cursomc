@@ -1,7 +1,6 @@
 package com.jorgesoares.cursomc.resources.exception;
 
 import com.jorgesoares.cursomc.service.exceptions.ObjNotFoundException;
-import org.hibernate.ObjectNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

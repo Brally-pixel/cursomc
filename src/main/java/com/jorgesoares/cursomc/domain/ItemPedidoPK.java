@@ -1,7 +1,5 @@
 package com.jorgesoares.cursomc.domain;
 
-import org.springframework.transaction.annotation.EnableTransactionManagement;
-
 import javax.persistence.Embeddable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;

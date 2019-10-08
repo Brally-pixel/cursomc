@@ -22,7 +22,6 @@ import com.jorgesoares.cursomc.repositories.ItemPedidoRepository;
 import com.jorgesoares.cursomc.repositories.PagamentoRepository;
 import com.jorgesoares.cursomc.repositories.PedidoRepository;
 import com.jorgesoares.cursomc.repositories.ProdutoRepository;
-import net.bytebuddy.asm.Advice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
