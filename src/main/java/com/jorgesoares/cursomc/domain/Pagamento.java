@@ -1,5 +1,6 @@
 package com.jorgesoares.cursomc.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.jorgesoares.cursomc.domain.enums.EstadoPagamento;
 import com.sun.javafx.beans.IDProperty;
 
@@ -22,6 +23,7 @@ public abstract class Pagamento implements Serializable {
     private Integer id;
     private Integer estado;
 
+    @JsonBackReference
     @OneToOne
     @JoinColumn(name = "Pedido_id")
     @MapsId
