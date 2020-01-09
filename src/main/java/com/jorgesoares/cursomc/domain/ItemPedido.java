@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.Objects;
 
 @Entity
@@ -40,6 +39,13 @@ public class ItemPedido implements Serializable {
     @JsonIgnore
     public Pedido getPedido(){
         return id.getPedido();
+    }
+
+    public void setPedido(Pedido pedido){
+        id.setPedido(pedido);
+    }
+    public void setProduto (Produto produto){
+        id.setProduto(produto);
     }
 
     public Produto getProduto(){

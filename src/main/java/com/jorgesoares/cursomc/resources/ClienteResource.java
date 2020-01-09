@@ -47,7 +47,7 @@ public class ClienteResource {
 			@RequestBody ClienteDTO objDto, @PathVariable Integer id ){
 		Cliente obj = service.fromDTO(objDto);
 		obj.setId(id);
-		obj = service.update(obj);
+		service.update(obj);
 		return ResponseEntity.noContent().build();
 	}
 	@RequestMapping(value = "/{id}" , method = RequestMethod.DELETE)
@@ -59,7 +59,7 @@ public class ClienteResource {
 	@RequestMapping( method = RequestMethod.GET)
 	public ResponseEntity<List<ClienteDTO>> findAll(){
 		List<Cliente> list = service.findAll();
-		List<ClienteDTO> listDto = list.stream().map(obj -> new ClienteDTO(obj)).collect(Collectors.toList());
+		List<ClienteDTO> listDto = list.stream().map(ClienteDTO::new).collect(Collectors.toList());
 		return ResponseEntity.ok().body(listDto);
 	}
 
@@ -70,7 +70,7 @@ public class ClienteResource {
 			@RequestParam(value = "orderBy", defaultValue = "nome") String orderBy,
 			@RequestParam(value = "direction", defaultValue = "ASC") String direction){
 		Page<Cliente> list = service.findPage(page, linesPerPage, orderBy, direction);
-		Page<ClienteDTO> listDto = list.map(obj -> new ClienteDTO(obj));
+		Page<ClienteDTO> listDto = list.map(ClienteDTO::new);
 		return ResponseEntity.ok().body(listDto);
 	}
 

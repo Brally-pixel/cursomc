@@ -1,8 +1,6 @@
 package com.jorgesoares.cursomc.resources;
 
-import com.jorgesoares.cursomc.domain.Categoria;
 import com.jorgesoares.cursomc.domain.Produto;
-import com.jorgesoares.cursomc.dto.CategoriaDTO;
 import com.jorgesoares.cursomc.dto.ProdutoDTO;
 import com.jorgesoares.cursomc.resources.utils.URL;
 import com.jorgesoares.cursomc.service.ProdutoService;
@@ -44,7 +42,7 @@ public class ProdutoResource {
 
 		Page<Produto> list = service.search(nomeDecod, ids, page, linesPerPage, orderBy, direction);
 
-		Page<ProdutoDTO> listDto = list.map(obj -> new ProdutoDTO(obj));
+		Page<ProdutoDTO> listDto = list.map(ProdutoDTO::new);
 		return ResponseEntity.ok().body(listDto);
 	}
 
