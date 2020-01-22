@@ -1,6 +1,8 @@
 package com.jorgesoares.cursomc.config;
 
-import com.jorgesoares.cursomc.service.DBService;
+import com.jorgesoares.cursomc.services.DBService;
+import com.jorgesoares.cursomc.services.EmailService;
+import com.jorgesoares.cursomc.services.MockEmailService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
@@ -15,5 +17,9 @@ public class TestConfig {
     public boolean instantiateDatabase(DBService dbService) throws ParseException {
             dbService.instantiateTestDatabase();
         return true;
+    }
+    @Bean
+    public EmailService emailService() {
+        return new MockEmailService();
     }
 }

@@ -1,6 +1,7 @@
 package com.jorgesoares.cursomc.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.jorgesoares.cursomc.domain.enums.EstadoPagamento;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -123,9 +124,8 @@ public class Pedido implements Serializable {
         final StringBuilder sb = new StringBuilder("Pedido");
         sb.append("Numero do Pedido=").append(id);
         sb.append(", Instante=").append(sdf.format(instante));
-        sb.append(", Cliente=").append(cliente);
-        sb.append(", Endereco De Entrega=").append(enderecoDeEntrega);
-        sb.append(", Situacao do pagamento=").append(pagamento);
+        sb.append(", Cliente=").append(getCliente().getNome());
+        sb.append(", Situacao do pagamento=").append(getPagamento().getEstado());
         sb.append("\n Detalhes: \n");
         for (ItemPedido ip : getItens()){
             sb.append(ip.toString());

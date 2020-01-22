@@ -1,11 +1,11 @@
-package com.jorgesoares.cursomc.service.validation;
+package com.jorgesoares.cursomc.services.validation;
 
 import com.jorgesoares.cursomc.domain.Cliente;
 import com.jorgesoares.cursomc.domain.enums.TipoCliente;
 import com.jorgesoares.cursomc.dto.ClienteNewDTO;
 import com.jorgesoares.cursomc.repositories.ClienteRepository;
 import com.jorgesoares.cursomc.resources.exception.FieldMessage;
-import com.jorgesoares.cursomc.service.validation.util.BR;
+import com.jorgesoares.cursomc.services.validation.util.BR;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.validation.ConstraintValidator;

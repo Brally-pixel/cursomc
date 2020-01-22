@@ -1,7 +1,7 @@
 package com.jorgesoares.cursomc.resources.exception;
 
-import com.jorgesoares.cursomc.service.exceptions.DataIntegrityException;
-import com.jorgesoares.cursomc.service.exceptions.ObjNotFoundException;
+import com.jorgesoares.cursomc.services.exceptions.DataIntegrityException;
+import com.jorgesoares.cursomc.services.exceptions.ObjNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;

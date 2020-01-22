@@ -1,4 +1,4 @@
-package com.jorgesoares.cursomc.service;
+package com.jorgesoares.cursomc.services;
 
 import com.jorgesoares.cursomc.domain.ItemPedido;
 import com.jorgesoares.cursomc.domain.PagamentoComBoleto;
@@ -8,8 +8,7 @@ import com.jorgesoares.cursomc.repositories.ItemPedidoRepository;
 import com.jorgesoares.cursomc.repositories.PagamentoRepository;
 import com.jorgesoares.cursomc.repositories.PedidoRepository;
 import com.jorgesoares.cursomc.repositories.ProdutoRepository;
-import com.jorgesoares.cursomc.service.exceptions.ObjNotFoundException;
-import net.bytebuddy.asm.Advice;
+import com.jorgesoares.cursomc.services.exceptions.ObjNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -41,6 +40,9 @@ public class PedidoService {
     @Autowired
     private  ClienteService clienteService;
 
+    @Autowired
+    private EmailService emailService;
+
     public Pedido find(Integer id) {
         Optional<Pedido> obj = repo.findById(id);
         return obj.orElseThrow(() -> new ObjNotFoundException(
@@ -66,7 +68,7 @@ public class PedidoService {
             ip.setPedido(obj);
         }
         itemPedidoRepository.saveAll(obj.getItens());
-        System.out.println(obj);
+        emailService.sendOrderConfirmationEmail(obj);
         return obj;
 
     }

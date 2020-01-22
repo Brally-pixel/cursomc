@@ -1,4 +1,4 @@
-package com.jorgesoares.cursomc.service;
+package com.jorgesoares.cursomc.services;
 
 import com.jorgesoares.cursomc.domain.PagamentoComBoleto;
 import org.springframework.stereotype.Service;

@@ -3,7 +3,7 @@ package com.jorgesoares.cursomc.resources;
 import com.jorgesoares.cursomc.domain.Cliente;
 import com.jorgesoares.cursomc.dto.ClienteDTO;
 import com.jorgesoares.cursomc.dto.ClienteNewDTO;
-import com.jorgesoares.cursomc.service.ClienteService;
+import com.jorgesoares.cursomc.services.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;

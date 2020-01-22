@@ -1,4 +1,4 @@
-package com.jorgesoares.cursomc.service;
+package com.jorgesoares.cursomc.services;
 
 import com.jorgesoares.cursomc.domain.*;
 import com.jorgesoares.cursomc.domain.enums.EstadoPagamento;

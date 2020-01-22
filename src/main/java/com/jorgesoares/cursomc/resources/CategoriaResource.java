@@ -2,7 +2,7 @@ package com.jorgesoares.cursomc.resources;
 
 import com.jorgesoares.cursomc.domain.Categoria;
 import com.jorgesoares.cursomc.dto.CategoriaDTO;
-import com.jorgesoares.cursomc.service.CategoriaService;
+import com.jorgesoares.cursomc.services.CategoriaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;

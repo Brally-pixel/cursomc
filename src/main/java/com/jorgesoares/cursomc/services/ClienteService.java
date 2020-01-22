@@ -1,4 +1,4 @@
-package com.jorgesoares.cursomc.service;
+package com.jorgesoares.cursomc.services;
 
 import com.jorgesoares.cursomc.domain.Cidade;
 import com.jorgesoares.cursomc.domain.Cliente;
@@ -9,8 +9,8 @@ import com.jorgesoares.cursomc.dto.ClienteNewDTO;
 import com.jorgesoares.cursomc.repositories.CidadeRepository;
 import com.jorgesoares.cursomc.repositories.ClienteRepository;
 import com.jorgesoares.cursomc.repositories.EnderecoRepository;
-import com.jorgesoares.cursomc.service.exceptions.DataIntegrityException;
-import com.jorgesoares.cursomc.service.exceptions.ObjNotFoundException;
+import com.jorgesoares.cursomc.services.exceptions.DataIntegrityException;
+import com.jorgesoares.cursomc.services.exceptions.ObjNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;

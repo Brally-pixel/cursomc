@@ -1,4 +1,4 @@
-package com.jorgesoares.cursomc.service.exceptions;
+package com.jorgesoares.cursomc.services.exceptions;
 
 public class ObjNotFoundException extends RuntimeException {
 

@@ -1,4 +1,4 @@
-package com.jorgesoares.cursomc.service.validation;
+package com.jorgesoares.cursomc.services.validation;
 
 import com.jorgesoares.cursomc.domain.Cliente;
 import com.jorgesoares.cursomc.dto.ClienteDTO;

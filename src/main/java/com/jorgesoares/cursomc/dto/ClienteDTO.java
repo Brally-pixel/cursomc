@@ -1,7 +1,7 @@
 package com.jorgesoares.cursomc.dto;
 
 import com.jorgesoares.cursomc.domain.Cliente;
-import com.jorgesoares.cursomc.service.validation.ClienteUpdate;
+import com.jorgesoares.cursomc.services.validation.ClienteUpdate;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.Email;

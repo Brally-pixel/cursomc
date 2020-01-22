@@ -1,9 +1,7 @@
 package com.jorgesoares.cursomc.resources;
 
-import com.jorgesoares.cursomc.domain.Categoria;
 import com.jorgesoares.cursomc.domain.Pedido;
-import com.jorgesoares.cursomc.dto.CategoriaDTO;
-import com.jorgesoares.cursomc.service.PedidoService;
+import com.jorgesoares.cursomc.services.PedidoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

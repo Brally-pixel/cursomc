@@ -1,10 +1,10 @@
-package com.jorgesoares.cursomc.service;
+package com.jorgesoares.cursomc.services;
 
 import com.jorgesoares.cursomc.domain.Categoria;
 import com.jorgesoares.cursomc.domain.Produto;
 import com.jorgesoares.cursomc.repositories.CategoriaRepository;
 import com.jorgesoares.cursomc.repositories.ProdutoRepository;
-import com.jorgesoares.cursomc.service.exceptions.ObjNotFoundException;
+import com.jorgesoares.cursomc.services.exceptions.ObjNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
