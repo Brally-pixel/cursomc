@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import java.io.Serializable;
+import java.text.NumberFormat;
+import java.util.Locale;
 import java.util.Objects;
 
 @Entity
@@ -23,7 +25,7 @@ public class ItemPedido implements Serializable {
     public ItemPedido() {
     }
 
-    public ItemPedido(Pedido pedido,Produto produto, Double desconto, Integer quantidade, Double preco) {
+    public ItemPedido(Pedido pedido, Produto produto, Double desconto, Integer quantidade, Double preco) {
         super();
         id.setPedido(pedido);
         id.setProduto(produto);
@@ -31,24 +33,26 @@ public class ItemPedido implements Serializable {
         this.quantidade = quantidade;
         this.preco = preco;
     }
-    public Double getSubTotal(){
+
+    public Double getSubTotal() {
         return (preco - desconto) * quantidade;
     }
 
 
     @JsonIgnore
-    public Pedido getPedido(){
+    public Pedido getPedido() {
         return id.getPedido();
     }
 
-    public void setPedido(Pedido pedido){
+    public void setPedido(Pedido pedido) {
         id.setPedido(pedido);
     }
-    public void setProduto (Produto produto){
+
+    public void setProduto(Produto produto) {
         id.setProduto(produto);
     }
 
-    public Produto getProduto(){
+    public Produto getProduto() {
         return id.getProduto();
     }
 
@@ -95,5 +99,19 @@ public class ItemPedido implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        NumberFormat nf = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
+
+        final StringBuilder sb = new StringBuilder("Itens do Pedido: ");
+        sb.append(getProduto().getNome());
+        sb.append(", quantidade=").append(quantidade);
+        sb.append(", preco=").append(nf.format(preco));
+        sb.append(", Subtotal= ");
+        sb.append(nf.format(getSubTotal()));
+        sb.append('\n');
+        return sb.toString();
     }
 }
