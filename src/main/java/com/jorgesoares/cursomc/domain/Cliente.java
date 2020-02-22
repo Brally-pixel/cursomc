@@ -14,7 +14,6 @@ import java.util.Set;
 @Entity
 public class Cliente implements Serializable {
 
-
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -26,7 +25,6 @@ public class Cliente implements Serializable {
     private String email;
     private String cpfCnpj;
     private Integer tipo;
-
 
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
     private List<Endereco> enderecos = new ArrayList<>();
@@ -126,6 +124,5 @@ public class Cliente implements Serializable {
     public void setNome(String nome) {
         this.nome = nome;
     }
-
 
 }

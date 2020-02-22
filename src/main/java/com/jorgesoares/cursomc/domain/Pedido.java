@@ -1,7 +1,6 @@
 package com.jorgesoares.cursomc.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.jorgesoares.cursomc.domain.enums.EstadoPagamento;
 
 import javax.persistence.*;
 import java.io.Serializable;

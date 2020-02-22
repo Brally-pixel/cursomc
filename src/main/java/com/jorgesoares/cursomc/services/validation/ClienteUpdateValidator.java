@@ -23,10 +23,6 @@ public class ClienteUpdateValidator implements ConstraintValidator<ClienteUpdate
     private ClienteRepository repo;
 
     @Override
-    public void initialize(ClienteUpdate ann) {
-    }
-
-    @Override
     public boolean isValid(ClienteDTO objDto, ConstraintValidatorContext context) {
 
         Map<String, String> map = ( Map<String, String>) httpServletRequest.getAttribute(HandlerMapping.URI_TEMPLATE_VARIABLES_ATTRIBUTE);

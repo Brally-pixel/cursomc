@@ -11,8 +11,7 @@ import java.util.List;
 
 @Entity
 public class Categoria implements Serializable {
-	
-	
+
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -23,8 +22,6 @@ public class Categoria implements Serializable {
 	@ManyToMany(mappedBy = "categorias")
 	private List<Produto> produtos = new ArrayList<>();
 
-
-	
 	public Categoria () {}
 
 	public Categoria(Integer id, String nome) {
@@ -78,7 +75,4 @@ public class Categoria implements Serializable {
 			return other.id == null;
 		}else return id.equals(other.id);
 	}
-
-
-
 }
