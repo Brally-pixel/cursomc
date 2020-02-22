@@ -1,6 +1,8 @@
 package com.jorgesoares.cursomc.config;
 
 import com.jorgesoares.cursomc.services.DBService;
+import com.jorgesoares.cursomc.services.EmailService;
+import com.jorgesoares.cursomc.services.SmtpEmailService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,4 +26,9 @@ public class DevConfig {
             dbService.instantiateTestDatabase();
         return true;
     }
+    @Bean
+    public EmailService emailService(){
+        return new SmtpEmailService();
+    }
+
 }
