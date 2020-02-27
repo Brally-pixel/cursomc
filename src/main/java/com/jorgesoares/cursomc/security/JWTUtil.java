@@ -5,9 +5,9 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import org.springframework.util.ObjectUtils;
 
 import java.util.Date;
-import java.util.Optional;
 
 @Component
 public class JWTUtil {
@@ -42,8 +42,7 @@ public class JWTUtil {
     public String getUsername (String token) {
         Claims claims = getClaims(token);
 
-        return Optional.of(claims.getSubject()).orElse(null);
-
+       return !ObjectUtils.isEmpty(claims) ? claims.getSubject() : null;
     }
 
     private Claims getClaims(String token){
