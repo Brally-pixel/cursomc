@@ -3,12 +3,15 @@ package com.jorgesoares.cursomc.services;
 import com.jorgesoares.cursomc.domain.Cidade;
 import com.jorgesoares.cursomc.domain.Cliente;
 import com.jorgesoares.cursomc.domain.Endereco;
+import com.jorgesoares.cursomc.domain.enums.Perfil;
 import com.jorgesoares.cursomc.domain.enums.TipoCliente;
 import com.jorgesoares.cursomc.dto.ClienteDTO;
 import com.jorgesoares.cursomc.dto.ClienteNewDTO;
 import com.jorgesoares.cursomc.repositories.CidadeRepository;
 import com.jorgesoares.cursomc.repositories.ClienteRepository;
 import com.jorgesoares.cursomc.repositories.EnderecoRepository;
+import com.jorgesoares.cursomc.security.UserSS;
+import com.jorgesoares.cursomc.services.exceptions.AuthorizationException;
 import com.jorgesoares.cursomc.services.exceptions.DataIntegrityException;
 import com.jorgesoares.cursomc.services.exceptions.ObjNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +42,12 @@ public class ClienteService {
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     public Cliente find(Integer id) {
+
+        UserSS user = UserService.authenticated();
+        if (user == null || !user.hasRole(Perfil.ADMIN) && !id.equals(user.getId())){
+            throw new AuthorizationException("Acesso negado");
+        }
+
         Optional<Cliente> obj = repo.findById(id);
         return obj.orElseThrow(() -> new ObjNotFoundException(
                 "Objeto não encontrado! Id: " + id + ", Tipo: " + Cliente.class.getName()));

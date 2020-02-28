@@ -4,6 +4,7 @@ import com.jorgesoares.cursomc.domain.enums.Perfil;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import sun.misc.Perf;
 
 import java.util.Collection;
 import java.util.Set;
@@ -65,5 +66,10 @@ public class UserSS implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    public boolean hasRole(Perfil perfil){
+        return getAuthorities().contains(new SimpleGrantedAuthority(perfil.getDescricao()));
+
     }
 }
