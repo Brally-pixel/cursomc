@@ -18,7 +18,7 @@ public class ProdutoResource {
 	@Autowired
 	private ProdutoService service;
 
-    @RequestMapping(value = "/{id}" , method = RequestMethod.GET)
+    @GetMapping(value = "/{id}")
     public ResponseEntity<?> find(
 
     		@PathVariable Integer id){
@@ -29,7 +29,7 @@ public class ProdutoResource {
 
     }
 
-	@RequestMapping(method = RequestMethod.GET)
+	@GetMapping
 	public ResponseEntity<Page<ProdutoDTO>> findPage(
 			@RequestParam(value = "nome", defaultValue = "") String nome,
 			@RequestParam(value = "categorias", defaultValue = "") String categorias,

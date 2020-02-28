@@ -23,7 +23,7 @@ public class ClienteResource {
 	@Autowired
 	private ClienteService service;
 
-    @RequestMapping(value = "/{id}" , method = RequestMethod.GET)
+    @GetMapping(value = "/{id}")
     public ResponseEntity<?> find(
 
     		@PathVariable Integer id){
@@ -32,7 +32,7 @@ public class ClienteResource {
     	return ResponseEntity.ok().body(obj);
     }
 
-	@RequestMapping(method = RequestMethod.POST)
+	@PostMapping
 	public ResponseEntity<Void> insert(@Valid @RequestBody ClienteNewDTO objDto){
 		Cliente obj  = service.fromDTO(objDto);
 		obj = service.insert(obj);
@@ -42,7 +42,7 @@ public class ClienteResource {
 	}
 
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+	@PutMapping(value = "/{id}")
 	public ResponseEntity<Void> update(
 			@Valid
 			@RequestBody ClienteDTO objDto, @PathVariable Integer id ){
@@ -52,14 +52,14 @@ public class ClienteResource {
 		return ResponseEntity.noContent().build();
 	}
 	@PreAuthorize("hasAnyRole('ADMIN')")
-	@RequestMapping(value = "/{id}" , method = RequestMethod.DELETE)
+	@DeleteMapping(value = "/{id}")
 	public ResponseEntity<Void> delete(@PathVariable Integer id){
 		service.delete(id);
 		return ResponseEntity.noContent().build();
 	}
 
 	@PreAuthorize("hasAnyRole('ADMIN')")
-	@RequestMapping( method = RequestMethod.GET)
+	@GetMapping
 	public ResponseEntity<List<ClienteDTO>> findAll(){
 		List<Cliente> list = service.findAll();
 		List<ClienteDTO> listDto = list.stream().map(ClienteDTO::new).collect(Collectors.toList());
@@ -67,7 +67,7 @@ public class ClienteResource {
 	}
 
 	@PreAuthorize("hasAnyRole('ADMIN')")
-	@RequestMapping(value = "/page",method = RequestMethod.GET)
+	@GetMapping(value = "/page")
 	public ResponseEntity<Page<ClienteDTO>> findPage(
 			@RequestParam(value = "page", defaultValue = "0") Integer page,
 			@RequestParam(value = "linesPerPage", defaultValue = "24") Integer linesPerPage,
@@ -77,5 +77,4 @@ public class ClienteResource {
 		Page<ClienteDTO> listDto = list.map(ClienteDTO::new);
 		return ResponseEntity.ok().body(listDto);
 	}
-
 }
