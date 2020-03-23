@@ -14,7 +14,6 @@ import com.jorgesoares.cursomc.security.UserSS;
 import com.jorgesoares.cursomc.services.exceptions.AuthorizationException;
 import com.jorgesoares.cursomc.services.exceptions.DataIntegrityException;
 import com.jorgesoares.cursomc.services.exceptions.ObjNotFoundException;
-import net.bytebuddy.asm.Advice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
@@ -119,6 +118,15 @@ public class ClienteService {
     }
 
     public URI uploadProfilePicture (MultipartFile multipartFile){
-        return S3Service.uploadFile(multipartFile);
+        UserSS user = UserService.authenticated();
+
+        if (user == null){
+            throw new AuthorizationException("Acesso negado");
+        }
+        URI uri = S3Service.uploadFile(multipartFile);
+        Cliente cliente = find(user.getId());
+        cliente.setImageUrl(uri.toString());
+        repo.save(cliente);
+        return uri;
     }
 }
