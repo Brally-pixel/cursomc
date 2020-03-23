@@ -46,7 +46,7 @@ public class ClienteService {
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
-    private S3Service S3Service;
+    private S3Service s3Service;
 
     @Autowired
     private ImageService imageService;
@@ -134,7 +134,7 @@ public class ClienteService {
         BufferedImage jpgImage = imageService.getJpgImageFromFile(multipartFile);
         String fileName = prefix + user.getId() + ".jpg";
 
-        return S3Service.uploadFile(imageService.getInputStream(jpgImage, "jpg"), fileName, "image");
+        return s3Service.uploadFile(imageService.getInputStream(jpgImage, "jpg"), fileName, "image");
 
     }
 }

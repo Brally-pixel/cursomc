@@ -3,6 +3,8 @@ package com.jorgesoares.cursomc.domain;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.jorgesoares.cursomc.domain.enums.EstadoPagamento;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import javax.persistence.Entity;
 import java.util.Date;
@@ -44,12 +46,12 @@ public class PagamentoComBoleto extends Pagamento{
     }
 
     @Override
-    public boolean equals(Object object) {
-        return super.equals(object);
+    public boolean equals(Object obj) {
+        return EqualsBuilder.reflectionEquals(this, obj);
     }
 
     @Override
     public int hashCode() {
-        return super.hashCode();
+        return HashCodeBuilder.reflectionHashCode(this);
     }
 }

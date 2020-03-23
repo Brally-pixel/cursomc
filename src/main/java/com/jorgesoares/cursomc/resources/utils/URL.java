@@ -8,6 +8,8 @@ import java.util.stream.Collectors;
 
 public class URL {
 
+    private URL (){}
+
     public static String decodeParam(String s){
 
         try {
@@ -17,13 +19,6 @@ public class URL {
         }
     }
     public static List<Integer> decodeIntList(String s){
-//        String[] vet = s.split(",");
-//        List<Integer> list = new ArrayList<>();
-//        for (int i=0; i<vet.length; i++){
-//            list.add(Integer.parseInt(vet[i]));
-//        }
-//        return list;
-
         return Arrays.stream(s.split(",")).map(Integer::parseInt).collect(Collectors.toList());
     }
 }

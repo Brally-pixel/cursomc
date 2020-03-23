@@ -3,6 +3,8 @@ package com.jorgesoares.cursomc.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.jorgesoares.cursomc.domain.enums.Perfil;
 import com.jorgesoares.cursomc.domain.enums.TipoCliente;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -141,18 +143,13 @@ public class Cliente implements Serializable {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Cliente cliente = (Cliente) o;
-        return Objects.equals(id, cliente.id);
+    public boolean equals(Object obj) {
+        return EqualsBuilder.reflectionEquals(this, obj);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return HashCodeBuilder.reflectionHashCode(this);
     }
-
-
 
 }

@@ -1,6 +1,8 @@
 package com.jorgesoares.cursomc.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
@@ -89,16 +91,13 @@ public class ItemPedido implements Serializable {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        ItemPedido that = (ItemPedido) o;
-        return Objects.equals(id, that.id);
+    public boolean equals(Object obj) {
+        return EqualsBuilder.reflectionEquals(this, obj);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return HashCodeBuilder.reflectionHashCode(this);
     }
 
     @Override
