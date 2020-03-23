@@ -14,6 +14,7 @@ import com.jorgesoares.cursomc.security.UserSS;
 import com.jorgesoares.cursomc.services.exceptions.AuthorizationException;
 import com.jorgesoares.cursomc.services.exceptions.DataIntegrityException;
 import com.jorgesoares.cursomc.services.exceptions.ObjNotFoundException;
+import net.bytebuddy.asm.Advice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
@@ -21,8 +22,10 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.transaction.Transactional;
+import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
@@ -40,6 +43,9 @@ public class ClienteService {
 
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    @Autowired
+    private S3Service S3Service;
 
     public Cliente find(Integer id) {
 
@@ -81,9 +87,11 @@ public class ClienteService {
             throw new DataIntegrityException("Não é possivel excluir uma cliente que possui pedidos e/ou endereco");
         }
     }
+
     public List<Cliente> findAll(){
         return repo.findAll();
     }
+
     public Page<Cliente> findPage(Integer page, Integer linesPerPage, String orderBy, String direction) {
         PageRequest pageRequest = PageRequest.of(page, linesPerPage, Sort.Direction.valueOf(direction), orderBy);
         return repo.findAll(pageRequest);
@@ -108,6 +116,9 @@ public class ClienteService {
             cli.getTelefones().add(objDto.getTelefone3());
         }
         return cli;
+    }
 
+    public URI uploadProfilePicture (MultipartFile multipartFile){
+        return S3Service.uploadFile(multipartFile);
     }
 }
