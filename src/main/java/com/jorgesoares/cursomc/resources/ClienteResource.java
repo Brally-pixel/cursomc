@@ -6,6 +6,7 @@ import com.jorgesoares.cursomc.dto.ClienteNewDTO;
 import com.jorgesoares.cursomc.services.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -24,7 +25,7 @@ public class ClienteResource {
 	@Autowired
 	private ClienteService service;
 
-    @GetMapping(value = "/{id}")
+    @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<?> find(
 
     		@PathVariable Integer id){

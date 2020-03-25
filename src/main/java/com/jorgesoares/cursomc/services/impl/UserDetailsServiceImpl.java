@@ -1,4 +1,4 @@
-package com.jorgesoares.cursomc.services;
+package com.jorgesoares.cursomc.services.impl;
 
 import com.jorgesoares.cursomc.domain.Cliente;
 import com.jorgesoares.cursomc.repositories.ClienteRepository;

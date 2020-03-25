@@ -1,4 +1,4 @@
-package com.jorgesoares.cursomc.services;
+package com.jorgesoares.cursomc.services.impl;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,7 +9,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 
 import javax.mail.internet.MimeMessage;
 
-public class SmtpEmailService extends AbstractEmailService {
+public class SmtpEmailServiceImpl extends AbstractEmailServiceImpl {
 
     @Autowired
     private MailSender mailSender;
@@ -17,7 +17,7 @@ public class SmtpEmailService extends AbstractEmailService {
     @Autowired
     private JavaMailSender javaMailSender;
 
-    private static final Logger LOG = LoggerFactory.getLogger(SmtpEmailService.class);
+    private static final Logger LOG = LoggerFactory.getLogger(SmtpEmailServiceImpl.class);
 
     @Override
     public void sendEmail(SimpleMailMessage msg) {

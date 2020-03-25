@@ -1,7 +1,8 @@
-package com.jorgesoares.cursomc.services;
+package com.jorgesoares.cursomc.services.impl;
 
 import com.jorgesoares.cursomc.domain.Cliente;
 import com.jorgesoares.cursomc.domain.Pedido;
+import com.jorgesoares.cursomc.services.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
@@ -14,7 +15,7 @@ import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import java.util.Date;
 
-public abstract class AbstractEmailService implements EmailService{
+public abstract class AbstractEmailServiceImpl implements EmailService {
 
     @Value("${default.sender}")
     private String sender;

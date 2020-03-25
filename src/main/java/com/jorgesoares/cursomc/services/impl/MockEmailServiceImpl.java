@@ -1,4 +1,4 @@
-package com.jorgesoares.cursomc.services;
+package com.jorgesoares.cursomc.services.impl;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -7,9 +7,9 @@ import org.springframework.mail.SimpleMailMessage;
 import javax.mail.internet.MimeMessage;
 
 
-public class MockEmailService extends AbstractEmailService {
+public class MockEmailServiceImpl extends AbstractEmailServiceImpl {
 
-    private static final Logger LOG = LoggerFactory.getLogger(MockEmailService.class);
+    private static final Logger LOG = LoggerFactory.getLogger(MockEmailServiceImpl.class);
 
     @Override
     public void sendEmail(SimpleMailMessage msg) {

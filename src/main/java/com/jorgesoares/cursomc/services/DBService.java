@@ -104,7 +104,7 @@ public class DBService {
         est2.getCidades().addAll(Arrays.asList(c2, c3));
 
         Cliente cli1 = new Cliente(null, "Maria Silva", "jhorge.junior@gmail.com", "98449628032",
-                TipoCliente.PESSOAFISICA,bCryptPasswordEncoder.encode("123"));
+                TipoCliente.PESSOAFISICA, bCryptPasswordEncoder.encode("123"));
 
         cli1.getTelefones().addAll(Arrays.asList("14145151", "1340975097"));
 
