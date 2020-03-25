@@ -4,7 +4,6 @@ import com.jorgesoares.cursomc.domain.Cliente;
 import com.jorgesoares.cursomc.dto.ClienteDTO;
 import com.jorgesoares.cursomc.dto.ClienteNewDTO;
 import org.springframework.data.domain.Page;
-import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.net.URI;
