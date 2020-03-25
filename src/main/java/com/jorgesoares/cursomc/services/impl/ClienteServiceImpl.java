@@ -18,6 +18,7 @@ import com.jorgesoares.cursomc.services.UserService;
 import com.jorgesoares.cursomc.services.exceptions.AuthorizationException;
 import com.jorgesoares.cursomc.services.exceptions.DataIntegrityException;
 import com.jorgesoares.cursomc.services.exceptions.ObjNotFoundException;
+import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -40,6 +41,9 @@ public class ClienteServiceImpl implements ClienteService {
 
     @Autowired
     private ClienteRepository repo;
+
+    @Autowired
+    private ClienteService clienteService;
 
     @Autowired
     private EnderecoRepository enderecoRepository;
@@ -110,6 +114,19 @@ public class ClienteServiceImpl implements ClienteService {
     @Override
     public List<Cliente> findAll() {
         return repo.findAll();
+    }
+
+    @Override
+    public Cliente findByEmail (String email){
+        UserSS user = UserService.authenticated();
+        if (user == null || !user.hasRole(Perfil.ADMIN) && !email.equals(user.getUsername())){
+            throw new AuthorizationException("Acesso negado");
+        }
+
+        Optional<Cliente> obj = Optional.ofNullable(repo.findByEmail(email));
+        return obj.orElseThrow(() -> new ObjNotFoundException(
+                "Objeto não encontrado! Id: " + user.getId() + ", Tipo: " + Cliente.class.getName()));
+        
     }
 
     @Override

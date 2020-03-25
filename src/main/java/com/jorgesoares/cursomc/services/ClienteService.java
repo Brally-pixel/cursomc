@@ -25,6 +25,8 @@ public interface ClienteService {
 
     List<Cliente> findAll();
 
+    Cliente findByEmail(String email);
+
     Page<Cliente> findPage(Integer page, Integer linesPerPage, String orderBy, String direction);
 
     Cliente fromDTO(ClienteDTO objDto);
