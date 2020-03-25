@@ -9,7 +9,6 @@ import java.io.IOException;
 @Component
 public class HeaderExposureFilter implements Filter {
 
-
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {}
 
