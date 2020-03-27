@@ -19,7 +19,7 @@ public class ProdutoResource {
 	private ProdutoService service;
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<?> find(
+    public ResponseEntity<Produto> find(
 
     		@PathVariable Integer id){
 

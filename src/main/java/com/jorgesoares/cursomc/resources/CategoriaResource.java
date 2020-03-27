@@ -31,7 +31,7 @@ public class CategoriaResource {
 	private CategoriaService service;
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<?> find(
+    public ResponseEntity<Categoria> find(
     		@PathVariable Integer id){
 
     	Categoria obj = service.find(id);

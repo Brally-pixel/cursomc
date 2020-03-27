@@ -15,7 +15,7 @@ public class CidadeServiceImpl implements CidadeService {
     private CidadeRepository cidadeRepository;
 
     @Override
-    public List<Cidade> find(Integer estadoId) {
+    public List<Cidade> findByEstado(Integer estadoId) {
         return cidadeRepository.findCidade(estadoId);
     }
 }

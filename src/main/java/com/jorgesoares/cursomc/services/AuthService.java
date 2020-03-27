@@ -2,9 +2,9 @@ package com.jorgesoares.cursomc.services;
 
 public interface AuthService {
 
-     void sendNewPassword(String email);
+    void sendNewPassword(String email);
 
-     String newPassword();
+    String newPassword();
 
-     char randomChar();
+    char randomChar();
 }

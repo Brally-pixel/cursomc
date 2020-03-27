@@ -7,5 +7,5 @@ import java.util.Date;
 
 public interface BoletoService {
 
-    void preencherPagamentoComBoleto (PagamentoComBoleto pagto, Date instanteDoPedido);
+    void preencherPagamentoComBoleto(PagamentoComBoleto pagto, Date instanteDoPedido);
 }

@@ -5,7 +5,6 @@ import org.springframework.web.multipart.MultipartFile;
 import java.awt.image.BufferedImage;
 import java.io.InputStream;
 
-
 public interface ImageService {
 
     BufferedImage getJpgImageFromFile(MultipartFile uploadedFile);

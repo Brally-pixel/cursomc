@@ -25,7 +25,7 @@ public class PedidoResource {
 	private PedidoService service;
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<?> find(
+    public ResponseEntity<Pedido> find(
 
     		@PathVariable Integer id){
 

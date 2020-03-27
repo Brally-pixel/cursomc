@@ -14,7 +14,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import java.io.Serializable;
-import java.util.Objects;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)

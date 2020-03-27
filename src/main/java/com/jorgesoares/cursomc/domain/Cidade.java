@@ -10,7 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import java.io.Serializable;
-import java.util.Objects;
 
 @Entity
 public class Cidade implements Serializable {
@@ -32,7 +31,8 @@ public class Cidade implements Serializable {
         this.estado = estado;
     }
 
-    public Cidade() {}
+    public Cidade() {
+    }
 
     public Integer getId() {
         return id;

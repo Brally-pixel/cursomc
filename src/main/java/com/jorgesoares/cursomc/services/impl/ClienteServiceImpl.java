@@ -18,7 +18,6 @@ import com.jorgesoares.cursomc.services.UserService;
 import com.jorgesoares.cursomc.services.exceptions.AuthorizationException;
 import com.jorgesoares.cursomc.services.exceptions.DataIntegrityException;
 import com.jorgesoares.cursomc.services.exceptions.ObjNotFoundException;
-import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -39,6 +38,7 @@ import java.util.Optional;
 public class ClienteServiceImpl implements ClienteService {
 
 
+    public static final String ACESSO_NEGADO = "Acesso negado";
     @Autowired
     private ClienteRepository repo;
 
@@ -71,7 +71,7 @@ public class ClienteServiceImpl implements ClienteService {
 
         UserSS user = UserService.authenticated();
         if (user == null || !user.hasRole(Perfil.ADMIN) && !id.equals(user.getId())) {
-            throw new AuthorizationException("Acesso negado");
+            throw new AuthorizationException(ACESSO_NEGADO);
         }
 
         Optional<Cliente> obj = repo.findById(id);
@@ -120,7 +120,7 @@ public class ClienteServiceImpl implements ClienteService {
     public Cliente findByEmail (String email){
         UserSS user = UserService.authenticated();
         if (user == null || !user.hasRole(Perfil.ADMIN) && !email.equals(user.getUsername())){
-            throw new AuthorizationException("Acesso negado");
+            throw new AuthorizationException(ACESSO_NEGADO);
         }
 
         Optional<Cliente> obj = Optional.ofNullable(repo.findByEmail(email));
@@ -163,7 +163,7 @@ public class ClienteServiceImpl implements ClienteService {
         UserSS user = UserService.authenticated();
 
         if (user == null) {
-            throw new AuthorizationException("Acesso negado");
+            throw new AuthorizationException(ACESSO_NEGADO);
         }
         BufferedImage jpgImage = imageService.getJpgImageFromFile(multipartFile);
         jpgImage = imageService.cropSquare(jpgImage);
